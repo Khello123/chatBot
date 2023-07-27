@@ -30,11 +30,11 @@ app.get("/getNextQuestions/:id",(req,res)=>{
     if(id==="1"){
         const filteredQuestion=medicalQuestions.filter((item)=>item.id===3||item.id===4)
         const nextQuestions=filteredQuestion.map((q)=>({question:q.questions,id:q.id,role:"user"}))
-        res.send([...nextQuestions,{answer:med.answers,id:med.id,role:"system"}])
+        res.send([{answer:med.answers,id:med.id,role:"system"},...nextQuestions])
     }else if(id==="2"){
         const filteredQuestion=medicalQuestions.filter((item)=>item.id===5||item.id===6)
         const nextQuestions=filteredQuestion.map((q)=>({question:q.questions,id:q.id,role:"user"}))
-        res.send([...nextQuestions,{answer:med.answers,id:med.id,role:"system"}])
+        res.send([{answer:med.answers,id:med.id,role:"system"},...nextQuestions])
     }
    
 })
